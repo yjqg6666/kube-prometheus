@@ -10,13 +10,16 @@ metadata:
   name: prometheus-k8s
   namespace: monitoring
 spec:
+  type: NodePort
   ports:
   - name: web
     port: 9090
     targetPort: web
+    nodePort: 32001
   - name: reloader-web
     port: 8080
     targetPort: reloader-web
+    nodePort: 32002
   selector:
     app.kubernetes.io/component: prometheus
     app.kubernetes.io/instance: k8s
